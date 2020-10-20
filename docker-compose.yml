@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  easybuild:
+    build: .
+    environment:
+            EASYBUILD_GITHUB_USER: ${EB_GIT_USER:?} # before '$ docker-compose run easybuild' is run, user must set EB_GIT_USER variable on host machine 
+    volumes:
+            - $HOME/.ssh/:/home/easybuild/.ssh/ # can '/home/easybuild/' be replaced for a variable?
+            - $PWD/isc20_easybuild_tutorial:/home/easybuild
+    stdin_open: true
+    tty: true
